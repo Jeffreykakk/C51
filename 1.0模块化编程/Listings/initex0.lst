@@ -1,0 +1,39 @@
+C51 COMPILER V9.54   INITEX0                                                               10/07/2022 13:18:10 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE INITEX0
+OBJECT MODULE PLACED IN .\Objects\initex0.obj
+COMPILER INVOKED BY: D:\Keil5\C51\BIN\C51.EXE initex0.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\ini
+                    -tex0.lst) TABS(2) OBJECT(.\Objects\initex0.obj)
+
+line level    source
+
+   1          #include <REGX51.H>
+   2          
+   3          void initex0()    //±ßÑØ´¥·¢
+   4          {
+   5   1        IT0=1;
+   6   1        EX0=1;
+   7   1        EA=1;
+   8   1      }
+   9          
+  10          
+  11          
+  12          //void ex_isr() interrupt 0
+  13          //{
+  14          //  
+  15          //}
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =      7    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

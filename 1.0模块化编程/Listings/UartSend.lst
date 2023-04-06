@@ -1,0 +1,32 @@
+C51 COMPILER V9.54   UARTSEND                                                              10/07/2022 13:18:10 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE UARTSEND
+OBJECT MODULE PLACED IN .\Objects\UartSend.obj
+COMPILER INVOKED BY: D:\Keil5\C51\BIN\C51.EXE UartSend.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\Ua
+                    -rtSend.lst) TABS(2) OBJECT(.\Objects\UartSend.obj)
+
+line level    source
+
+   1          #include <REGX51.H>
+   2          
+   3          void UartSend(unsigned char Byte)
+   4          {
+   5   1        SBUF=Byte;
+   6   1        while(TI==0);
+   7   1        TI=0;
+   8   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =      8    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

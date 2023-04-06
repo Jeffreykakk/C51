@@ -1,0 +1,31 @@
+C51 COMPILER V9.54   HELLO                                                                 10/04/2022 17:21:13 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE HELLO
+OBJECT MODULE PLACED IN .\Objects\hello.obj
+COMPILER INVOKED BY: D:\Keil5\C51\BIN\C51.EXE hello.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\hello
+                    -.lst) TABS(2) OBJECT(.\Objects\hello.obj)
+
+line level    source
+
+   1          #include <REGX51.H>
+   2          unsigned char ch2[]={0x76,0x79,0x38,0x38,0x3F};
+   3          
+   4          void hello(unsigned int y)
+   5          {
+   6   1        P2=ch2[y];
+   7   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =      8    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      5    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

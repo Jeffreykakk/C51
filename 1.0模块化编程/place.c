@@ -1,0 +1,8 @@
+#include <REGX51.H>
+
+unsigned char ch2[]={0xFE,0xFD,0XFB,0xF7,0xEF,0xDF,0xBF,0x7F};
+
+void place(unsigned int x)
+{
+	P3=ch2[x];
+}
