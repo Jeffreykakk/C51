@@ -1,0 +1,5 @@
+".\Objects\main.obj",
+".\Objects\initcounter1.obj",
+".\Objects\display.obj" 
+TO ".\Objects\Project" 
+PRINT(".\Listings\Project.m51")
