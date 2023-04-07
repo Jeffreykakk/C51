@@ -1,0 +1,111 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        10/06/2022  09:52:39  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\KEIL5\C51\BIN\BL51.EXE .\Objects\main.obj TO .\Objects\Project PRINT (.\Listings\Project.m51)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\main.obj (MAIN)
+  D:\KEIL5\C51\LIB\C51S.LIB (?C_STARTUP)
+  D:\KEIL5\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\Objects\Project (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0001H     UNIT         ?DT?MAIN
+            IDATA   0009H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0003H     ABSOLUTE     
+                    0006H     07FAH                  *** GAP ***
+            CODE    0800H     008CH     UNIT         ?C_C51STARTUP
+            CODE    088CH     0014H     UNIT         ?PR?MAIN?MAIN
+            CODE    08A0H     0004H     UNIT         ?C_INITSEG
+            CODE    08A4H     0003H     UNIT         ?PR?EX_ISR?MAIN
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\Project (MAIN)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+
+
+UNRESOLVED EXTERNAL SYMBOLS:
+   INITEX0
+   _DISPLAY
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\Project (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/06/2022  09:52:39  PAGE 2
+
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:08A4H         PUBLIC        ex_isr
+  C:088CH         PUBLIC        main
+  D:0008H         PUBLIC        num
+  -------         PROC          EX_ISR
+  C:08A4H         LINE#         14
+  C:08A4H         LINE#         16
+  C:08A6H         LINE#         17
+  -------         ENDPROC       EX_ISR
+  -------         PROC          MAIN
+  C:088CH         LINE#         19
+  C:088CH         LINE#         20
+  C:088CH         LINE#         21
+  C:088CH         LINE#         22
+  C:088CH         LINE#         23
+  C:088FH         LINE#         24
+  C:0894H         LINE#         25
+  C:0897H         LINE#         26
+  C:089EH         LINE#         27
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  INITEX0
+    MODULE:  .\Objects\main.obj (MAIN)
+
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  _DISPLAY
+    MODULE:  .\Objects\main.obj (MAIN)
+
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  INITEX0
+    MODULE:  .\Objects\main.obj (MAIN)
+    ADDRESS: 088DH
+
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  _DISPLAY
+    MODULE:  .\Objects\main.obj (MAIN)
+    ADDRESS: 089CH
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 001DH BYTE ( 1%) *
+******************************************************************************
+
+Program Size: data=10.0 xdata=0 code=173
+LINK/LOCATE RUN COMPLETE.  4 WARNING(S),  0 ERROR(S)
