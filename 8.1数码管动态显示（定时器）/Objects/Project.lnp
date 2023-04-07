@@ -1,0 +1,7 @@
+".\Objects\main.obj",
+".\Objects\display.obj",
+".\Objects\place.obj",
+".\Objects\play.obj",
+".\Objects\Timer0.obj" 
+TO ".\Objects\Project" 
+PRINT(".\Listings\Project.m51")

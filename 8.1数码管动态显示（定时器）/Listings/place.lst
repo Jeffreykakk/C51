@@ -1,0 +1,32 @@
+C51 COMPILER V9.54   PLACE                                                                 10/05/2022 17:31:28 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE PLACE
+OBJECT MODULE PLACED IN .\Objects\place.obj
+COMPILER INVOKED BY: D:\Keil5\C51\BIN\C51.EXE ..\模块化编程\place.c OPTIMIZE(8,SPEED) BROWSE INCDIR(..\模块化编程) DEBUG
+                    - OBJECTEXTEND PRINT(.\Listings\place.lst) TABS(2) OBJECT(.\Objects\place.obj)
+
+line level    source
+
+   1          #include <REGX51.H>
+   2          
+   3          unsigned char ch2[]={0xFE,0xFD,0XFB,0xF7,0xEF,0xDF,0xBF,0x7F};
+   4          
+   5          void place(unsigned int x)
+   6          {
+   7   1        P3=ch2[x];
+   8   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =      8    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      8    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
