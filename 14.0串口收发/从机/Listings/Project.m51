@@ -1,0 +1,141 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        10/09/2022  17:54:11  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\KEIL5\C51\BIN\BL51.EXE .\Objects\main.obj TO .\Objects\Project PRINT (.\Listings\Project.m51)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\main.obj (MAIN)
+  D:\KEIL5\C51\LIB\C51S.LIB (?C_STARTUP)
+  D:\KEIL5\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\Objects\Project (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0013H     UNIT         ?DT?MAIN
+            IDATA   001BH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0020H                  *** GAP ***
+            CODE    0023H     0003H     ABSOLUTE     
+                    0026H     07DAH                  *** GAP ***
+            CODE    0800H     008CH     UNIT         ?C_C51STARTUP
+            CODE    088CH     0016H     UNIT         ?PR?SERIAL_COMINIT?MAIN
+            CODE    08A2H     0016H     UNIT         ?C_INITSEG
+            CODE    08B8H     0015H     UNIT         ?PR?MAIN?MAIN
+            CODE    08CDH     000CH     UNIT         ?PR?SER?MAIN
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\Project (MAIN)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+?PR?MAIN?MAIN
+  +--> ?PR?SERIAL_COMINIT?MAIN
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\Project (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/09/2022  17:54:11  PAGE 2
+
+
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  B:00A8H.7       PUBLIC        EA
+  D:00A8H         PUBLIC        IE
+  B:00A8H.4       PUBLIC        ES
+  D:00B8H         PUBLIC        IP
+  B:0098H.0       PUBLIC        RI
+  C:088CH         PUBLIC        Serial_comInit
+  D:0008H         PUBLIC        flag
+  C:08B8H         PUBLIC        main
+  D:0099H         PUBLIC        SBUF
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  D:0009H         PUBLIC        table_yin
+  C:08CDH         PUBLIC        ser
+  D:008DH         PUBLIC        TH1
+  B:0098H.7       PUBLIC        SM0
+  B:0098H.6       PUBLIC        SM1
+  D:008BH         PUBLIC        TL1
+  B:0088H.6       PUBLIC        TR1
+  D:0019H         PUBLIC        a
+  B:0098H.4       PUBLIC        REN
+  D:00C8H         PUBLIC        T2CON
+  D:001AH         PUBLIC        i
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          SERIAL_COMINIT
+  C:088CH         LINE#         7
+  C:088CH         LINE#         8
+  C:088CH         LINE#         10
+  C:088FH         LINE#         11
+  C:0892H         LINE#         12
+  C:0895H         LINE#         13
+  C:0897H         LINE#         14
+  C:0899H         LINE#         15
+  C:089BH         LINE#         16
+  C:089DH         LINE#         17
+  C:089FH         LINE#         18
+  C:08A1H         LINE#         19
+  -------         ENDPROC       SERIAL_COMINIT
+  -------         PROC          MAIN
+  C:08B8H         LINE#         20
+  C:08B8H         LINE#         21
+  C:08B8H         LINE#         22
+  C:08BBH         LINE#         23
+  C:08BBH         LINE#         24
+  C:08BBH         LINE#         25
+  C:08C0H         LINE#         26
+  C:08C0H         LINE#         28
+  C:08C8H         LINE#         29
+  C:08CBH         LINE#         33
+  C:08CBH         LINE#         37
+  -------         ENDPROC       MAIN
+  -------         PROC          SER
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/09/2022  17:54:11  PAGE 3
+
+
+  C:08CDH         LINE#         42
+  C:08CDH         LINE#         44
+  C:08D0H         LINE#         45
+  C:08D0H         LINE#         46
+  C:08D2H         LINE#         47
+  C:08D5H         LINE#         48
+  C:08D8H         LINE#         49
+  C:08D8H         LINE#         50
+  -------         ENDPROC       SER
+  -------         ENDMOD        MAIN
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 004FH BYTE ( 3%) *
+******************************************************************************
+
+Program Size: data=28.0 xdata=0 code=223
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
