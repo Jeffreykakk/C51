@@ -1,0 +1,235 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        10/07/2022  13:49:16  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\KEIL5\C51\BIN\BL51.EXE .\Objects\main.obj, .\Objects\Timer0.obj, .\Objects\Delay.obj, .\Objects\shuzi.obj TO .\Object
+>> s\Project PRINT (.\Listings\Project.m51)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\main.obj (MAIN)
+  .\Objects\Timer0.obj (TIMER0)
+  .\Objects\Delay.obj (DELAY)
+  .\Objects\shuzi.obj (SHUZI)
+  D:\KEIL5\C51\LIB\C51S.LIB (?C_STARTUP)
+  D:\KEIL5\C51\LIB\C51S.LIB (?C?UIDIV)
+  D:\KEIL5\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\Objects\Project (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0010H     UNIT         ?DT?SHUZI
+            DATA    0018H     000EH     UNIT         ?DT?MAIN
+            IDATA   0026H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0008H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+                    000EH     07F2H                  *** GAP ***
+            CODE    0800H     008CH     UNIT         ?C_C51STARTUP
+            CODE    088CH     0079H     UNIT         ?PR?TIMER0_ROUTINE?MAIN
+            CODE    0905H     0055H     UNIT         ?C?LIB_CODE
+            CODE    095AH     0038H     UNIT         ?PR?_SHUZI?SHUZI
+            CODE    0992H     0023H     UNIT         ?C_INITSEG
+            CODE    09B5H     001DH     UNIT         ?PR?DELAY?SHUZI
+            CODE    09D2H     0017H     UNIT         ?PR?TIMER0INIT?TIMER0
+            CODE    09E9H     0015H     UNIT         ?PR?_DELAY?DELAY
+            CODE    09FEH     000CH     UNIT         ?PR?_DISPLAY?MAIN
+            CODE    0A0AH     000CH     UNIT         ?PR?MAIN?MAIN
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\Project (MAIN)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?PR?TIMER0_ROUTINE?MAIN
+  +--> ?PR?_DISPLAY?MAIN
+  +--> ?PR?_DELAY?DELAY
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/07/2022  13:49:16  PAGE 2
+
+
+*** NEW ROOT ***************************************************
+
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+?PR?MAIN?MAIN
+  +--> ?PR?TIMER0INIT?TIMER0
+  +--> ?PR?_SHUZI?SHUZI
+
+?PR?_SHUZI?SHUZI
+  +--> ?PR?DELAY?SHUZI
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\Project (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:088CH         PUBLIC        Timer0_Routine
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  C:0A0AH         PUBLIC        main
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  D:001AH         PUBLIC        i
+  D:001CH         PUBLIC        ledmod
+  C:09FEH         PUBLIC        _display
+  B:00A0H.0       PUBLIC        L0
+  B:00A0H.1       PUBLIC        L1
+  -------         PROC          _DISPLAY
+  D:0006H         SYMBOL        x
+  C:09FEH         LINE#         11
+  C:09FEH         LINE#         12
+  C:09FEH         LINE#         13
+  C:0A00H         LINE#         14
+  C:0A02H         LINE#         15
+  C:0A09H         LINE#         16
+  -------         ENDPROC       _DISPLAY
+  -------         PROC          TIMER0_ROUTINE
+  -------         DO            
+  D:0018H         SYMBOL        count
+  -------         ENDDO         
+  C:088CH         LINE#         18
+  C:08A9H         LINE#         21
+  C:08ACH         LINE#         22
+  C:08AFH         LINE#         23
+  C:08B7H         LINE#         24
+  C:08BFH         LINE#         25
+  C:08BFH         LINE#         26
+  C:08C5H         LINE#         27
+  C:08CBH         LINE#         28
+  C:08EAH         LINE#         29
+  C:08EAH         LINE#         30
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/07/2022  13:49:16  PAGE 3
+
+
+  -------         ENDPROC       TIMER0_ROUTINE
+  -------         PROC          MAIN
+  C:0A0AH         LINE#         34
+  C:0A0AH         LINE#         35
+  C:0A0AH         LINE#         36
+  C:0A0DH         LINE#         37
+  C:0A0DH         LINE#         38
+  C:0A0DH         LINE#         39
+  C:0A14H         LINE#         40
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        TIMER0
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  B:00A8H.7       PUBLIC        EA
+  D:0089H         PUBLIC        TMOD
+  B:00A8H.1       PUBLIC        ET0
+  B:0088H.5       PUBLIC        TF0
+  C:09D2H         PUBLIC        Timer0Init
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  B:00B8H.1       PUBLIC        PT0
+  B:0088H.4       PUBLIC        TR0
+  -------         PROC          TIMER0INIT
+  C:09D2H         LINE#         4
+  C:09D2H         LINE#         5
+  C:09D2H         LINE#         6
+  C:09D5H         LINE#         7
+  C:09D8H         LINE#         8
+  C:09DAH         LINE#         9
+  C:09DCH         LINE#         10
+  C:09DFH         LINE#         11
+  C:09E2H         LINE#         12
+  C:09E4H         LINE#         13
+  C:09E6H         LINE#         14
+  C:09E8H         LINE#         15
+  -------         ENDPROC       TIMER0INIT
+  -------         ENDMOD        TIMER0
+
+  -------         MODULE        DELAY
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:09E9H         PUBLIC        _Delay
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        xms
+  -------         DO            
+  D:0005H         SYMBOL        i
+  D:0004H         SYMBOL        j
+  -------         ENDDO         
+  C:09E9H         LINE#         1
+  C:09E9H         LINE#         2
+  C:09E9H         LINE#         4
+  C:09F3H         LINE#         5
+  C:09F3H         LINE#         6
+  C:09F5H         LINE#         7
+  C:09F7H         LINE#         9
+  C:09F7H         LINE#         10
+  C:09F9H         LINE#         11
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/07/2022  13:49:16  PAGE 4
+
+
+  C:09FBH         LINE#         12
+  C:09FDH         LINE#         14
+  -------         ENDPROC       _DELAY
+  -------         ENDMOD        DELAY
+
+  -------         MODULE        SHUZI
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  C:09B5H         PUBLIC        delay
+  C:095AH         PUBLIC        _shuzi
+  D:0008H         PUBLIC        duanma
+  B:00A0H.0       PUBLIC        L0
+  B:00A0H.1       PUBLIC        L1
+  -------         PROC          DELAY
+  -------         DO            
+  D:0006H         SYMBOL        i
+  D:0006H         SYMBOL        j
+  -------         ENDDO         
+  C:09B5H         LINE#         7
+  C:09B5H         LINE#         8
+  C:09B5H         LINE#         10
+  C:09C3H         LINE#         11
+  C:09D1H         LINE#         12
+  -------         ENDPROC       DELAY
+  -------         PROC          _SHUZI
+  D:0002H         SYMBOL        x
+  C:095AH         LINE#         14
+  C:095EH         LINE#         15
+  C:095EH         LINE#         16
+  C:0961H         LINE#         17
+  C:0963H         LINE#         18
+  C:0965H         LINE#         19
+  C:0976H         LINE#         20
+  C:0979H         LINE#         22
+  C:097BH         LINE#         23
+  C:097DH         LINE#         24
+  C:098FH         LINE#         25
+  -------         ENDPROC       _SHUZI
+  -------         ENDMOD        SHUZI
+
+  -------         MODULE        ?C?UIDIV
+  C:0905H         PUBLIC        ?C?UIDIV
+  -------         ENDMOD        ?C?UIDIV
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0137H BYTE (15%) *
+******************************************************************************
+
+Program Size: data=39.0 xdata=0 code=540
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
