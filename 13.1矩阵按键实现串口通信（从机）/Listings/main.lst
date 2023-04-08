@@ -1,0 +1,230 @@
+C51 COMPILER V9.54   MAIN                                                                  10/10/2022 14:07:48 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\Keil5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main.l
+                    -st) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <REGX51.H>
+   2          
+   3          
+   4          void Uart_init();
+   5          void place(unsigned int x);
+   6          void show(unsigned int x);
+   7          void Delay(unsigned int xms);
+   8          void keyscan();
+   9          
+  10          //void Timer0Init(void);
+  11          //void play();
+  12          
+  13          unsigned char receivedata=99;
+  14          unsigned char key=99,num=98,i=0;
+  15          
+  16          void main()
+  17          {
+  18   1        Uart_init(); 
+  19   1        while(1)
+  20   1        {
+  21   2          keyscan();
+  22   2          place(6);
+  23   2          show(0);
+  24   2          Delay(1);
+  25   2          place(7);
+  26   2          show(key);
+  27   2          Delay(1);
+  28   2          place(0);
+  29   2          show(0);
+  30   2          Delay(1);
+  31   2          place(1);
+  32   2          show(num);
+  33   2          Delay(1);
+  34   2          if(num==key)
+  35   2            while(1)
+  36   2            {
+  37   3              P2=0xff;
+  38   3              P0=0x88;
+  39   3            }
+  40   2          if(i==18)
+  41   2            while(1)
+  42   2            {
+  43   3              P2=0xff;
+  44   3              P0=0x8e;
+  45   3            }
+  46   2        }
+  47   1      }
+  48          
+  49          
+  50          void Uart_init() 
+  51          {
+  52   1        SCON=0x50;
+  53   1        TMOD=0x20;
+  54   1        PCON=0x00;
+C51 COMPILER V9.54   MAIN                                                                  10/10/2022 14:07:48 PAGE 2   
+
+  55   1        TH1=0xf3;
+  56   1        TL1=0xf3;
+  57   1        ES=1;
+  58   1        EA=1;
+  59   1        TR1=1;
+  60   1      }
+  61          
+  62          
+  63          void Usart() interrupt 4
+  64          {
+  65   1        receivedata=SBUF; 
+  66   1        RI=0;
+  67   1        switch(receivedata)
+  68   1        {
+  69   2          case 0: num=0; break;
+  70   2          case 1: num=1; break;
+  71   2          case 2: num=2; break;
+  72   2          case 3: num=3; break;
+  73   2          case 4: num=4; break;
+  74   2          case 5: num=5; break;
+  75   2          case 6: num=6; break;
+  76   2          case 7: num=7; break;
+  77   2          case 8: num=8; break;
+  78   2          case 9: num=9; break;
+  79   2        }       
+  80   1         
+  81   1      }
+  82          
+  83          
+  84          unsigned char ch2[]={0x01,0x02,0x04,0x08,0x10,0x20,0x40,0x80};
+  85          
+  86          void place(unsigned int x)
+  87          {
+  88   1        P2=ch2[x];
+  89   1      }
+  90          
+  91          
+  92          unsigned char ch1[]={0xc0,0xf9,0xa4,0xb0,0x99,0x92,0x82,0xf8,0x80,0x90};
+  93          
+  94          void show(unsigned int x)
+  95          {
+  96   1        P0=ch1[x];
+  97   1      }
+  98          
+  99          void Delay(unsigned int xms)    
+ 100          {
+ 101   1        unsigned char i, j;
+ 102   1        while(xms--)
+ 103   1        {
+ 104   2          i = 2;
+ 105   2          j = 239;
+ 106   2          do
+ 107   2          {
+ 108   3            while (--j);
+ 109   3          } while (--i);
+ 110   2        }
+ 111   1        
+ 112   1      }
+ 113          
+ 114          void keyscan()
+ 115          { 
+ 116   1        unsigned char temp0=0,temp1=0,temp=0;
+C51 COMPILER V9.54   MAIN                                                                  10/10/2022 14:07:48 PAGE 3   
+
+ 117   1        P1=0xf0;
+ 118   1        if(P1!=0xf0)
+ 119   1        {
+ 120   2          Delay(20);
+ 121   2          temp0=P1;
+ 122   2          P1=0x0f;
+ 123   2          if(P1!=0x0f)
+ 124   2          {
+ 125   3            temp1=P1;
+ 126   3          }
+ 127   2        }
+ 128   1        temp=temp0+temp1;
+ 129   1        switch(temp)
+ 130   1        {
+ 131   2          case 0xee: key=0;i++;break;
+ 132   2          case 0xde: key=1;i++;break;
+ 133   2          case 0xbe: key=2;i++;break;
+ 134   2          case 0x7e: key=3;i++;break;
+ 135   2          case 0xed: key=4;i++;break;
+ 136   2          case 0xdd: key=5;i++;break;
+ 137   2          case 0xbd: key=6;i++;break;
+ 138   2          case 0x7d: key=7;i++;break;
+ 139   2          case 0xeb: key=8;i++;break;
+ 140   2          case 0xdb: key=9;i++;break;
+ 141   2        }
+ 142   1      }
+ 143          
+ 144          
+ 145          
+ 146          
+ 147          //unsigned char time=9;
+ 148          //void play()
+ 149          //{
+ 150          //  while(1)
+ 151          //  {
+ 152          //    place(3);
+ 153          //    show(0);
+ 154          //    Delay(1);
+ 155          //    place(4);
+ 156          //    show(time);
+ 157          //    Delay(1);
+ 158          //  }
+ 159          //}
+ 160          
+ 161          
+ 162          
+ 163          //void Timer0Init(void)
+ 164          //{
+ 165          //  TMOD=TMOD&0XF0; 
+ 166          //  TMOD=TMOD|0X01;
+ 167          //  TF0=0;
+ 168          //  TR0=1;
+ 169          //  TH0=0xFC;
+ 170          //  TL0=0x18;
+ 171          //  ET0=1;
+ 172          //  EA=1;
+ 173          //  PT0=0;
+ 174          //}
+ 175          
+ 176          
+ 177          
+ 178          //void Timer0_Routine() interrupt 1
+C51 COMPILER V9.54   MAIN                                                                  10/10/2022 14:07:48 PAGE 4   
+
+ 179          //{
+ 180          //  static unsigned int count;
+ 181          //  TH0=0xFC;
+ 182          //  TL0=0x18;
+ 183          //  count++;
+ 184          //  if(count==1000)
+ 185          //  {
+ 186          //    count=0;
+ 187          //    time--;
+ 188          //    if(time==0)
+ 189          //    {
+ 190          //      while(1)
+ 191          //      {
+ 192          //        P2=0xff;
+ 193          //        P0=0x8e;
+ 194          //      }
+ 195          //    }
+ 196          //  }
+ 197          //}
+ 198          
+ 199          
+ 200          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    413    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     22    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
