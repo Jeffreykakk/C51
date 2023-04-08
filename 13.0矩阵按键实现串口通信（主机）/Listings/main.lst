@@ -1,0 +1,118 @@
+C51 COMPILER V9.54   MAIN                                                                  10/10/2022 12:41:32 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\Keil5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main.l
+                    -st) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <REGX51.H>
+   2          
+   3          
+   4          void senddata();
+   5          void delay(unsigned int n);
+   6          void keyscan();
+   7          void display(unsigned int x);
+   8          void Usart_Init();
+   9          
+  10          
+  11          unsigned char key=99;
+  12          unsigned char ch1[]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f};
+  13          
+  14          
+  15          void main()
+  16          {
+  17   1        Usart_Init();
+  18   1        while(1)  
+  19   1        {
+  20   2          keyscan();
+  21   2          display(key);
+  22   2        }
+  23   1      }
+  24          
+  25          
+  26          
+  27          void display(unsigned int x)
+  28          {
+  29   1        P2=ch1[x];
+  30   1      }
+  31          
+  32          void delay(unsigned int n)
+  33          {
+  34   1        unsigned int i=0,j=0;
+  35   1        for(i=0;i<n;i++)
+  36   1        {
+  37   2          for(j=0;j<120;j++);
+  38   2        }
+  39   1      }
+  40          
+  41          
+  42          void keyscan()
+  43          { 
+  44   1        unsigned char temp0=0,temp1=0,temp=0;
+  45   1        P1=0xf0;
+  46   1        if(P1!=0xf0)
+  47   1        {
+  48   2          delay(20);
+  49   2          temp0=P1;
+  50   2          P1=0x0f;
+  51   2          if(P1!=0x0f)
+  52   2          {
+  53   3            temp1=P1;
+  54   3          }
+C51 COMPILER V9.54   MAIN                                                                  10/10/2022 12:41:32 PAGE 2   
+
+  55   2        }
+  56   1        temp=temp0+temp1;
+  57   1        switch(temp)
+  58   1        {
+  59   2          case 0xee: key=0;senddata();break;
+  60   2          case 0xde: key=1;senddata();break;
+  61   2          case 0xbe: key=2;senddata();break;
+  62   2          case 0x7e: key=3;senddata();break;
+  63   2          case 0xed: key=4;senddata();break;
+  64   2          case 0xdd: key=5;senddata();break;
+  65   2          case 0xbd: key=6;senddata();break;
+  66   2          case 0x7d: key=7;senddata();break;
+  67   2          case 0xeb: key=8;senddata();break;
+  68   2          case 0xdb: key=9;senddata();break;
+  69   2        }
+  70   1      }
+  71          
+  72          void senddata()
+  73          {
+  74   1          SBUF=key;      
+  75   1          while(!TI);      
+  76   1          TI=0;            
+  77   1      }
+  78           
+  79          
+  80          void Usart_Init()
+  81          {
+  82   1        SCON=0x50;
+  83   1        TMOD=0x20;
+  84   1        PCON=0x00;
+  85   1        TH1=0xf3;
+  86   1        TL1=0xf3;
+  87   1        ES=1;
+  88   1        EA=1;
+  89   1        TR1=1;
+  90   1      }
+  91          
+  92          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    214    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     11       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
